@@ -23,10 +23,6 @@ mysqli_close($conn);
 <link rel='stylesheet' type='text/css' href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
 <style>
 div {
-	width: 100px;
-	height: 100px;
-	background-color: red;
-	
 	position: absolute;
 	top:0;
 	bottom: 0;
