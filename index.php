@@ -8,7 +8,7 @@ $password = "uwu";
 $conn = new mysqli($serverName, $username, $password, "Missing Children");
 
 if ($conn->connect_error) {
-        die("Failed to connect to database: ".$conn->connect_error);
+  die("Failed to connect to database: ".$conn->connect_error);
 }
 
 $results = $conn->query($selectQuery);
@@ -27,21 +27,21 @@ mysqli_close($conn);
   <thead>
     <tr>
 <?php
-foreach ($tableColumns as &$column) {
-	echo "<th>".$column."</th>";
-}
+  foreach ($tableColumns as &$column) {
+    echo "<th>".$column."</th>";
+  }
 ?> 
     </tr>
   </thead>
   <tbody>
 <?php
-while ($row = $results->fetch_assoc()) {
-echo "<tr>";
-foreach ($row as $key => $value) {
-	echo "<td>".$key."</td>";
-}
-echo "</tr>";
-}
+  while ($row = $results->fetch_assoc()) {
+    echo "<tr>";
+    foreach ($row as $key => $value) {
+      echo "<td>".$key."</td>";
+  
+    echo "</tr>";
+  }
 ?>     
   </tbody>
 </table>
