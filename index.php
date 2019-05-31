@@ -38,7 +38,7 @@ mysqli_close($conn);
   while ($row = $results->fetch_assoc()) {
     echo "<tr>";
     foreach ($row as $key => $value) {
-      echo "<td>".$key."</td>";
+      echo "<td>".$value."</td>";
     }
     echo "</tr>";
   }
