@@ -19,11 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     die("BAD QUERY! Please dont send me crafted POSTs");
   }
 
-  $results = $conn->query("SELECT * FROM MissingCase WHERE ".$field." LIKE \" %".$val."%\" ORDER BY caseID");
-
-} else {
-  $results = $conn->query($selectQuery);
+  $selectQuery = "SELECT * FROM MissingCase WHERE ".$field." LIKE \" %".$val."%\" ORDER BY caseID";
 }
+
+$results = $conn->query($selectQuery);
 
 mysqli_close($conn);
 
@@ -55,8 +54,11 @@ div {
 
 <body>
 <div>
-<h1 style="align:center;">Missing Child Cases</h1>
-<p style="align:center;">For boolean values: 1 = True, 0 = False.</p>
+  <div>
+    <h1>Missing Child Cases</h1>
+    <p>For boolean values: 1 = True, 0 = False.</p>
+    <p><?php echo $selectQuery; ?></p>
+  </div>
 
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" style="align:center;">
 Value: <input type="text" name="val">
