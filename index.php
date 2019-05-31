@@ -15,13 +15,31 @@ $results = $conn->query($selectQuery);
 
 mysqli_close($conn);
 ?>
+
 <html>
 <head>
 <title>Missing Children Database Portal</title>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <link rel='stylesheet' type='text/css' href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+<style>
+div {
+	width: 100px;
+	height: 100px;
+	background-color: red;
+	
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+  	
+	margin: auto;
+}
+</style>
 </head>
+
 <body>
+<div>
 <h1>Missing Child Cases</h1>
 <table class="table">
   <thead>
@@ -45,6 +63,7 @@ mysqli_close($conn);
 ?>     
   </tbody>
 </table>
+</div>
 </body>
 </html>
 
