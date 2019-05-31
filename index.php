@@ -14,6 +14,13 @@ if ($conn->connect_error) {
 $results = $conn->query($selectQuery);
 
 mysqli_close($conn);
+
+function test_input ($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
 ?>
 
 <html>
