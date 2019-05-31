@@ -11,11 +11,23 @@ if ($conn->connect_error) {
   die("Failed to connect to database: ".$conn->connect_error);
 }
 
-$results = $conn->query($selectQuery);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $val = escape($_POST["val"];
+  $field = escapte($_POST["field"]);
+
+  if ($field != "childID" && $field != "suspectID") {
+    die("BAD QUERY! Please dont send me crafted POSTs");
+  }
+
+  $results = $conn->query("SELECT * FROM MissingCase WHERE ".$field." LIKE \" %".$val."%\" ORDER BY caseID");
+
+} else {
+  $results = $conn->query($selectQuery);
+}
 
 mysqli_close($conn);
 
-function test_input ($data) {
+function escape ($data) {
   $data = trim($data);
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
@@ -44,8 +56,9 @@ div {
 <body>
 <div>
 <h1 style="align:center;">Missing Child Cases</h1>
+<p style="align:center;">For boolean values: 1 = True, 0 = False.</p>
 
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" style="align:center;">
 Value: <input type="text" name="val">
 <select name="field">
   <option value="childID">Child ID</option>
