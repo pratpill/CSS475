@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $val = escape($_POST["val"]);
-  $field = escapte($_POST["field"]);
+  $field = escape($_POST["field"]);
 
   if ($field != "childID" && $field != "suspectID") {
     die("BAD QUERY! Please dont send me crafted POSTs");
