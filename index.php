@@ -12,7 +12,7 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $val = escape($_POST["val"];
+  $val = escape($_POST["val"]);
   $field = escapte($_POST["field"]);
 
   if ($field != "childID" && $field != "suspectID") {
