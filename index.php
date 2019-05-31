@@ -1,6 +1,6 @@
 <?php
-$selectQuery = ""; // TODO: this
-$tableColumns = array(); //TODO: this
+$selectQuery = "SELECT * FROM MissingCase"; 
+$tableColumns = array("Case ID", "Potential Amber Alert", "Abduction", "Is in NCIC DB", "Report Type", "Search ID", "Amber Alert ID", "Child ID", "Media Release Request ID", "Private Detective ID", "Suspect ID");
 
 $serverName = "localhost";
 $username = "root";
