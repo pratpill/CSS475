@@ -2,10 +2,10 @@
 $selectQuery = "SELECT * FROM MissingCase"; 
 $tableColumns = array("Case ID", "Potential Amber Alert", "Abduction", "Is in NCIC DB", "Report Type", "Search ID", "Amber Alert ID", "Child ID", "Media Release Request ID", "Private Detective ID", "Suspect ID");
 
-$serverName = "localhost";
+$serverName = "vergil.u.washington.edu";
 $username = "root";
 $password = "uwu";
-$conn = new mysqli($serverName, $username, $password, "Missing Children");
+$conn = new mysqli($serverName, $username, $password, 8448, "Missing Children");
 
 if ($conn->connect_error) {
   die("Failed to connect to database: ".$conn->connect_error);
