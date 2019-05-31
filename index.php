@@ -37,8 +37,8 @@ function escape ($data) {
 <html>
 <head>
   <title>Missing Children Database Portal</title>
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  <link rel='stylesheet' type='text/css' href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <link rel='stylesheet' type='text/css' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
 
   <style>
     
@@ -47,7 +47,7 @@ function escape ($data) {
 </head>
 
 <body>
-<div class="row">
+<div>
   <div class="card">
     <div class="card-header">Missing Child Cases</div>
     <div class="card-body">
