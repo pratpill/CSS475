@@ -36,55 +36,65 @@ function escape ($data) {
 
 <html>
 <head>
-<title>Missing Children Database Portal</title>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<link rel='stylesheet' type='text/css' href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+  <title>Missing Children Database Portal</title>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <link rel='stylesheet' type='text/css' href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+
+  <style>
+    
+  </style>
+
 </head>
 
 <body>
-<div class="card">
-  <h1>Missing Child Cases</h1>
-  <p>For boolean values: 1 = True, 0 = False.</p>
-  <p><?php echo $selectQuery; ?></p>
+<div class="row">
+  <div class="card">
+    <div class="card-header">Missing Child Cases</div>
+    <div class="card-body">
+      <p>For boolean values: 1 = True, 0 = False.</p>
+      <p><?php echo $selectQuery; ?></p>
+    </div>
 
-  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" style="align:center;">
-    Value: <input type="text" name="val">
-    <select name="field">
-      <option value="childID">Child ID</option>
-      <option value="suspectID">Suspect ID</option>
-    </select><br>
-    <input type="submit">
-  </form>
-</div>
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" style="align:center;">
+      Value: <input type="text" name="val">
+      <select name="field">
+        <option value="childID">Child ID</option>
+        <option value="suspectID">Suspect ID</option>
+      </select><br><br>
+      <input type="submit">
+    </form>
+  </div>
 
-<div class="card">
-<table class="table">
-  <thead>
-    <tr>
-<?php
-  foreach ($tableColumns as &$column) {
-    echo "<th>".$column."</th>";
-  }
-?> 
-    </tr>
-  </thead>
-  <tbody>
-<?php
-  while ($row = $results->fetch_assoc()) {
-    echo "<tr>";
-    foreach ($row as $key => $value) {
-      if ($key = "caseID") {
-        echo "<td><a href=\"CSS475/query.php?id=".$value."\">".$value."</a></td>";
+  <div class="card">
+  <table class="table">
+    <thead>
+      <tr>
+        <?php
+          foreach ($tableColumns as &$column) {
+            echo "<th>".$column."</th>";
+          }
+        ?> 
+      </tr>
+    </thead>
+    <tbody>
+      <?php
+        while ($row = $results->fetch_assoc()) {
+          echo "<tr>";
+          foreach ($row as $key => $value) {
+            if ($key == "caseID") {
+              echo "<td><a href=\"CSS475/query.php?id=".$value."\">".$value."</a></td>";
 
-      } else {
-        echo "<td>".$value."</td>";
-      }
-    }
-    echo "</tr>";
-  }
-?>     
-  </tbody>
-</table>
+            } else {
+              echo "<td>".$value."</td>";
+            }
+	  }
+
+          echo "</tr>";
+        }
+      ?>     
+    </tbody>
+  </table>
+  </div>
 </div>
 </body>
 </html>
