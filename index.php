@@ -39,36 +39,25 @@ function escape ($data) {
 <title>Missing Children Database Portal</title>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <link rel='stylesheet' type='text/css' href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
-<style>
-div {
-	position: absolute;
-	top:0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-  	
-	margin: auto;
-}
-</style>
 </head>
 
 <body>
-<div>
-  <div>
-    <h1>Missing Child Cases</h1>
-    <p>For boolean values: 1 = True, 0 = False.</p>
-    <p><?php echo $selectQuery; ?></p>
-  </div>
+<div class="card">
+  <h1>Missing Child Cases</h1>
+  <h3>For boolean values: 1 = True, 0 = False.</h3>
+  <h3><?php echo $selectQuery; ?></h3>
 
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" style="align:center;">
-Value: <input type="text" name="val">
-<select name="field">
-  <option value="childID">Child ID</option>
-  <option value="suspectID">Suspect ID</option>
-</select><br>
-<input type="submit">
-</form>
+  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" style="align:center;">
+    Value: <input type="text" name="val">
+    <select name="field">
+      <option value="childID">Child ID</option>
+      <option value="suspectID">Suspect ID</option>
+    </select><br>
+    <input type="submit">
+  </form>
+</div>
 
+<div class="card">
 <table class="table">
   <thead>
     <tr>
