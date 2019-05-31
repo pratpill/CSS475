@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     die("BAD QUERY! Please dont send me crafted POSTs");
   }
 
-  $selectQuery = "SELECT * FROM MissingCase WHERE ".$field." LIKE \" %".$val."%\" ORDER BY caseID";
+  $selectQuery = "SELECT * FROM MissingCase WHERE ".$field." = ".$val." ORDER BY caseID";
 }
 
 $results = $conn->query($selectQuery);
@@ -44,8 +44,8 @@ function escape ($data) {
 <body>
 <div class="card">
   <h1>Missing Child Cases</h1>
-  <h3>For boolean values: 1 = True, 0 = False.</h3>
-  <h3><?php echo $selectQuery; ?></h3>
+  <p>For boolean values: 1 = True, 0 = False.</p>
+  <p><?php echo $selectQuery; ?></p>
 
   <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" style="align:center;">
     Value: <input type="text" name="val">
