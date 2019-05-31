@@ -5,7 +5,7 @@ $tableColumns = array("Case ID", "Potential Amber Alert", "Abduction", "Is in NC
 $serverName = "vergil.u.washington.edu";
 $username = "root";
 $password = "uwu";
-$conn = new mysqli($serverName, $username, $password, 8448, "Missing Children");
+$conn = new mysqli($serverName, $username, $password, "Missing Children", 8448);
 
 if ($conn->connect_error) {
   die("Failed to connect to database: ".$conn->connect_error);
