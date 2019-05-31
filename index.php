@@ -39,7 +39,7 @@ mysqli_close($conn);
     echo "<tr>";
     foreach ($row as $key => $value) {
       echo "<td>".$key."</td>";
-  
+    }
     echo "</tr>";
   }
 ?>     
