@@ -17,12 +17,12 @@ mysqli_close($conn);
 ?>
 <html>
 <head>
-<title>PHP in HTML Example</title>
+<title>Missing Children Database Portal</title>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <link rel='stylesheet' type='text/css' href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
 </head>
 <body>
-<h1>Data in table (TODO: name table)</h1>
+<h1>Missing Child Cases</h1>
 <table class="table">
   <thead>
     <tr>
