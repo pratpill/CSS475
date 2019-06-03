@@ -30,29 +30,30 @@ function getInfo($caseID, $conn)
     " INNER JOIN (SELECT * FROM AmberAlert) a ON a.AlertID = c.amberAlertID".
     " INNER JOIN (SELECT * FROM Child INNER JOIN Address ON Child.Adddress = Address.AddressID) k ON k.ChildID = c.childID".
     " INNER JOIN (SELECT * FROM PrivateDetective) pd ON pd.pdID = c.pdID".
-    " INNER JOIN (SELECT * FROM ParentContact) pc ON pc.ParentContactId = k.ParentContactId"
+    " INNER JOIN (SELECT * FROM ParentContact) pc ON pc.ParentContactId = k.ParentContactId".
+    " INNER JOIN (SELECT * FROM Suspect) sp ON sp.suspectID =c.SuspectID"
     ;
     $results = $conn->query($selectQuery);
     return $results;
 }
-function getVolunteerInfo($caseId, $conn)
+/*function getVolunteerInfo($caseId, $conn)
 {
     $selectQuery = "SELECT * FROM (SELECT * FROM MissingCase WHERE caseID = ".$caseID.") c".
-    " INNER JOIN (SELECT * FROM SearchVolunteer) sv on c.searchID = sv.searchID".
-    " INNER JOIN (SELECT * FROM Volunteer) v on v.ID = sv.volunteerID";
+    " INNER JOIN (SELECT * FROM SearchVolunteer) sv ON sv.searchID = c.searchID".
+    " INNER JOIN (SELECT * FROM Volunteer) v ON v.ID = sv.searchVolunteerID";
     $vol_results = $conn->query($selectQuery);
     return $vol_results;
 
-}
+} */
 $id_val = $_GET["id"];
-echo("Child Id=".$id_val);
-echo("Connecting to database");
+#echo("Child Id=".$id_val);
+#echo("Connecting to database");
 $conn = getConnToDb();
-echo("Connected to database");
-echo("Get Child Info");
+#echo("Connected to database");
+#echo("Get Child Info");
 $results = getInfo($id_val, $conn);
-$vol_results = getVolunteerInfo($id_val, $conn);
-echo("close connection");
+//$vol_results = getVolunteerInfo($id_val, $conn);
+#echo("close connection");
 closeConnection($conn);
 ?>
 <h1>Missing Child Detailed Page</h1>
@@ -66,9 +67,9 @@ closeConnection($conn);
 ?>
 <form>
     <p style="padding-right: 132px;">
-        <b style="padding-right: 30px;">First Name:</b> 
+        <b style="padding-right: 30px;">First Name:</b>
 	<input type="text" style="padding-right: 40px;" value=<?php echo($row[22]) ?> disabled />
-        <b style="padding-left: 30px;">Last Name:</b> 
+        <b style="padding-left: 30px;">Last Name:</b>
 	<b style="padding-left: 25px;" ></b>
 	<input type="text" style="padding-right: 40px;" value=<?php echo($row[23]) ?> disabled />
     </p>
@@ -79,17 +80,17 @@ closeConnection($conn);
     </p>
     <p style="padding-right: 10px;"></p>
     <p style="padding-right: 40px;">
-        <b>Address:</b> 
+        <b>Address:</b>
         <input type="text" size="5" value=<?php printf('%s',$row[40])?> disabled />
         <input type="text" size="20" value=
-                <?php 
+                <?php
                      echo($row[41]);
-                 ?> 
+                 ?>
                 disabled />
         <input type="text" size="18" value=<?php printf('%s',$row[38])?> disabled />
         <input type="text" size="18" value=<?php printf('%s',$row[39])?> disabled />
         <input type="text" size="5" value=<?php printf('%s',$row[37])?> disabled />
-                  
+
     </p>
 </form>
 <h3>Parents</h3>
@@ -97,7 +98,7 @@ closeConnection($conn);
     <p style="padding-right: 132px;">
         <b style="padding-right: 30px;">First Name:</b>
 	<input type="text" style="padding-right: 40px;" value=<?php echo($row[48]) ?> disabled />
-        <b style="padding-left: 30px;">Last Name:</b> 
+        <b style="padding-left: 30px;">Last Name:</b>
 	<b style="padding-left: 25px;" ></b>
 	<input type="text" style="padding-right: 40px;" value=<?php echo($row[49]) ?> disabled />
     </p>
@@ -109,18 +110,54 @@ closeConnection($conn);
 <hr>
 <h2>Progress</h2>
 <h3>Alerts</h3>
+<form>
+    <p style="padding-right: 132px;">
+        <b style="padding-right: 30px;">Alert Date:</b>
+	<input type="text" style="padding-right: 40px;" value=<?php echo($row[16]) ?> disabled />
+        <b style="padding-left: 30px;">Alert Resolved:</b>
+	<b style="padding-left: 25px;" ></b>
+	<input type="text" style="padding-right: 40px;" value=
+    <?php
+    if($row[17]<= 0)
+    {
+        echo("no");
+    }
+    else
+    {
+        echo("yes");
+    }
+    ?>
+    disabled />
+    </p>
+</form>
 <h3>Detectives</h3>
 <form>
     <p style="padding-right: 132px;">
         <b style="padding-right: 30px;">First Name:</b>
 	<input type="text" style="padding-right: 40px;" value=<?php echo($row[43]) ?> disabled />
-        <b style="padding-left: 30px;">Last Name:</b> 
+        <b style="padding-left: 30px;">Last Name:</b>
 	<b style="padding-left: 25px;" ></b>
 	<input type="text" style="padding-right: 40px;" value=<?php echo($row[44]) ?> disabled />
     </p>
     <p style="padding-right: 40px;">
 </form>
-<h3>Volunteers</h3>
+<h3>Suspect</h3>
+    <p style="padding-right: 132px;">
+        <b style="padding-right: 30px;">First Name:</b>
+	<input type="text" style="padding-right: 40px;" value=<?php echo($row[53]) ?> disabled />
+        <b style="padding-left: 30px;">Last Name:</b>
+	<b style="padding-left: 25px;" ></b>
+	<input type="text" style="padding-right: 40px;" value=<?php echo($row[54]) ?> disabled />
+    </p>
+    <p style="padding-right: 40px;">
+        <b style="padding-right: 100px;">Descprition</b>
+        <input type="text" size="27" value=<?php printf('%s',$row[57])?> disabled />
+    </p>
+    <p style="padding-right: 40px;">
+        <b style="padding-right: 38px;">Reason Of Suspicion</b>
+        <input type="text" size="27" value=<?php printf('%s',$row[58])?> disabled />
+    </p>
+<!--<h3>Volunteers</h3>
 <?php
         if ($vol_results->num_rows > 0) {
 ?>
@@ -171,7 +208,6 @@ closeConnection($conn);
         {
             echo("no results have returned");
         }
-?>
+?>   -->
 </body>
 </html>
-
