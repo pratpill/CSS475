@@ -1,6 +1,15 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $updateQuery = "INSERT INTO PublicationRequest(signature, signatureDate, printName, relationshipCode, requesterphoneNo, requesterAddress) VALUES (";
+  $signed = $_POST["signed"] ? 1 : 0;
+  $date = escape($_POST["date"]);
+  $name = escape($_POST["name"]);
+  $relation = escape($_POST["relation"]);
+  $phone = escape($_POST["phone"]);
 
+  // TODO: validate here.
+  
+  // TODO: make query here.
 }
 
 function escape ($data) {
