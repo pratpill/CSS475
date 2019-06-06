@@ -45,7 +45,20 @@ function getInfo($caseID, $conn)
     return $vol_results;
 
 } */
-$id_val = $_GET["id"];
+function escape ($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+if ($_SERVER["REQUEST_METHOD"] == "POST") 
+{
+    $id_val = escape($_POST["id"]);
+}
+else
+{
+    $id_val = escape($_GET["id"]);
+}
 #echo("Child Id=".$id_val);
 #echo("Connecting to database");
 $conn = getConnToDb();
@@ -81,11 +94,8 @@ closeConnection($conn);
     <p style="padding-right: 10px;"></p>
     <p style="padding-right: 40px;">
         <b>Address:</b>
-        <input type="text" size="5" value=<?php printf('%s',$row[40])?> disabled />
-        <input type="text" size="20" value=
-                <?php
-                     echo($row[41]);
-                 ?>
+        <input type="text" size="5" value="<?php printf('%s',$row[40])?>" disabled />
+        <input type="text" size="20" value="<?php echo($row[41]); ?>"
                 disabled />
         <input type="text" size="18" value=<?php printf('%s',$row[38])?> disabled />
         <input type="text" size="18" value=<?php printf('%s',$row[39])?> disabled />
@@ -151,11 +161,11 @@ closeConnection($conn);
     </p>
     <p style="padding-right: 40px;">
         <b style="padding-right: 100px;">Descprition</b>
-        <input type="text" size="27" value=<?php printf('%s',$row[57])?> disabled />
+        <input type="text" size="27" value="<?php printf('%s',$row[57])?>" disabled />
     </p>
     <p style="padding-right: 40px;">
         <b style="padding-right: 38px;">Reason Of Suspicion</b>
-        <input type="text" size="27" value=<?php printf('%s',$row[58])?> disabled />
+        <input type="text" size="27" value="<?php printf('%s',$row[58])?>" disabled />
     </p>
 <!--<h3>Volunteers</h3>
 <?php
@@ -211,3 +221,5 @@ closeConnection($conn);
 ?>   -->
 </body>
 </html>
+
+
