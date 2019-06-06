@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $updateQuery = "INSERT INTO PublicationRequest(signature, signatureDate, printName, relationshipCode, requesterphoneNo, requesterAddress) VALUES (";
-  $signed = $_POST["signed"] ? 1 : 0;
+  $updateQuery = "INSERT INTO PublicationRequest(signature, signatureDate, printName, relationshipCode, requesterphoneNo) VALUES (";
+  $signed = $_POST["signed"] ? "1" : "0";
   $date = escape($_POST["date"]);
   $name = escape($_POST["name"]);
   $relation = escape($_POST["relation"]);
@@ -9,7 +9,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   // TODO: validate here.
   
-  // TODO: make query here.
+  $serverName = "vergil.u.washington.edu";
+  $username = "root";
+  $password = "uwu";
+  $conn = new mysqli($serverName, $username, $password, "Missing Children", 8448);
+
+  if ($conn->connect_error) {
+    die("Failed to connect to database: ".$conn->connect_error);
+  }
+
+  $results = $conn->query($updateQuery.$signed.", ".$date.", ".$name.", ".$relation.", ".$date;
+  mysqli_close();
 }
 
 function escape ($data) {
