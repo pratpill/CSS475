@@ -32,8 +32,7 @@ function getInfo($caseID, $conn)
     " LEFT JOIN (SELECT * FROM PrivateDetective) pd ON pd.pdID = c.pdID".
     " LEFT JOIN (SELECT * FROM ParentContact) pc ON pc.ParentContactId = k.ParentContactId".
     " LEFT JOIN (SELECT * FROM Suspect) sp ON sp.suspectID =c.SuspectID".
-    " LEFT JOIN (SELECT printName, relationshipCode, requesterphoneNo, signatureDate FROM PublicationRequest) pr ON pr.requestID = c.requestID"
-    ;
+    " LEFT JOIN (SELECT * FROM PublicationRequest) pr ON pr.requestID = c.requestID";
     $results = $conn->query($selectQuery);
     return $results;
 }
@@ -170,17 +169,21 @@ closeConnection($conn);
         <b style="padding-right: 38px;">Reason Of Suspicion</b>
         <input type="text" size="27" value="<?php printf('%s',$row[58])?>" disabled />
     </p>
-<h3>Release of information request</h3>
+<hr>
+<h2>Release of information request</h3>
     <p style="padding-right: 132px;">
-        <b style="padding-right: 30px;">Name</b>
-	<input type="text" size="27" value="<?php printf('%s',$row[59])?>" disabled />
-        <b style="padding-right: 30px;">Relationship</b>
+        <p><b style="padding-right: 30px;">Name</b>
 	<input type="text" size="27" value="<?php printf('%s',$row[60])?>" disabled />
-        <b style="padding-right: 30px;">Phone</b>
+        </p><p>
+        <b style="padding-right: 30px;">Relationship</b>
+	<input type="text" size="27" value="<?php printf('%s',$row[63])?>" disabled />
+        </p><p>
+ 	<b style="padding-right: 30px;">Phone</b>
+	<input type="text" size="27" value="<?php printf('%s',$row[64])?>" disabled />
+        </p><p>
+	<b style="padding-right: 30px;">Date Signed</b>
 	<input type="text" size="27" value="<?php printf('%s',$row[61])?>" disabled />
-        <b style="padding-right: 30px;">Date Signed</b>
-	<input type="text" size="27" value="<?php printf('%s',$row[62])?>" disabled />
-   </p>    
+   </p></p>    
 </body>
 </html>
 
