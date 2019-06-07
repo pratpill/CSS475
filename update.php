@@ -65,7 +65,9 @@ function escape ($data) {
 </head>
 
 <div>
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" style="align:center;">
+<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>?id=<?php echo $id_val ?>" 
+	method="post" style="align:center;">
+
   Sign Here: <input type="checkbox" name="signed">
   Sign Date: <input type="text" placeholder="<?php  echo date("Y-m-d H:i:s"); ?>" name="date">
   Print Name: <input type="text" name="name">
