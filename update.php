@@ -11,7 +11,7 @@ if($conn->query("SELECT * FROM MissingCase WHERE caseID = ".$id_val)->num_rows
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $updateQuery = "INSERT INTO PublicationRequest(signature, signatureDate, printName, relationshipCode, requesterphoneNo) VALUES (";
+  $updateQuery = "INSERT INTO PublicationRequest (signature, signatureDate, printName, relationshipCode, requesterphoneNo) VALUES (";
   $getPubReqPrimKeyQueryHead = "SELECT requestID FROM PublicationRequest WHERE signatureDate = ";
   $setPubReqInMissingCaseQueryHead = "UPDATE MissingCase SET requestID = ";
   $setPubReqInMissingCaseQueryTail = " WHERE caseId = ";
@@ -27,10 +27,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     die("Failed to connect to database: ".$conn->connect_error);
   }
 
-  $results = $conn->query($updateQuery.$signed.", ".$date.", ".$name.", ".$relation.", ".$phone);
-  $primKey = $conn->query($getPubReqPrimKeyQueryHead.$date." AND printName = ".$name." AND relationshipCode = ".
-			$relation." AND requesterphoneNo = ".$phone).fetch_row()[0];
-  $conn->query($setPubReqInMissingCaseQueryHead.$id_val.$setPubReqInMissingCaseQueryTail.$primKey);
+  $updateSql = $updateQuery.$signed.", '".$date."', '".$name."', '".$relation."', ".$phone.");";
+  if($conn->query($updateSql) === FALSE) {
+    die($updateSql."\n".$conn->error);
+  }
+
+  $primKey = $conn->insert_id;
+  $keySetSql = $setPubReqInMissingCaseQueryHead.$primKey.$setPubReqInMissingCaseQueryTail.$id_val;
+  if($conn->query($keySetSql) === FALSE) {
+    die($keySetSql."\n".$conn->error);
+  }
+
+  header("Location: query.php?id=".$id_val);
+  die();
 
   mysqli_close($conn);
 }
@@ -60,7 +69,7 @@ function escape ($data) {
 	method="post" style="align:center;">
 
   Sign Here: <input type="checkbox" name="signed">
-  Sign Date: <input type="text" placeholder="<?php  echo date("Y-m-d H:i:s"); ?>" name="date">
+  Sign Date: <input type="text" value="<?php  echo date("Y-m-d H:i:s"); ?>" name="date">
   Print Name: <input type="text" name="name">
   Relationship: <select name="relation">
 	<option value="Father">Father</option>
