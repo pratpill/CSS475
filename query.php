@@ -8,6 +8,9 @@
 
 <body>
 
+<a href="/update.php">Request Publication of this record</a>
+<br />
+
 <?php
 function getConnToDb(){
     $serverName = "vergil.u.washington.edu";
