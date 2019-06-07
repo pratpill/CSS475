@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 } else {
     $id_val = escape($_GET["id"]);
-    if($conn->query("SELECT * FROM MissingCase WHERE caseID = ".$id_val)->num_rows() 
+    if($conn->query("SELECT * FROM MissingCase WHERE caseID = ".$id_val)->num_rows 
 			< 1) {
 			die("Bad Case ID, try again from the beginning");			
     }

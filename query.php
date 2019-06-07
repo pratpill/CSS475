@@ -173,7 +173,7 @@ closeConnection($conn);
 <h2>Release of information request</h3>
     <p style="padding-right: 132px;">
         <p><b style="padding-right: 30px;">Name</b>
-	<input type="text" size="27" value="<?php printf('%s',$row[60])?>" disabled />
+	<input type="text" size="27" value="<?php printf('%s',$row[61])?>" disabled />
         </p><p>
         <b style="padding-right: 30px;">Relationship</b>
 	<input type="text" size="27" value="<?php printf('%s',$row[63])?>" disabled />
