@@ -71,7 +71,7 @@ closeConnection($conn);
 ?>
 <h1>Missing Child Detailed Page</h1>
 <hr>
-<a href="update.php">Request Publication of this record</a>
+<a href="update.php?id=<?php echo $id_val ?>">Request Publication of this record</a>
 <br />
 <h2>Child Details</h2>
 <h3>Profile</h3>
