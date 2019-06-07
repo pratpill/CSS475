@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     die("Failed to connect to database: ".$conn->connect_error);
   }
 
-  $results = $conn->query($updateQuery.$signed.", ".$date.", ".$name.", ".$relation.", ".$date;
+  $results = $conn->query($updateQuery.$signed.", ".$date.", ".$name.", ".$relation.", ".$date);
   mysqli_close();
 }
 
