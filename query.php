@@ -79,7 +79,8 @@ closeConnection($conn);
  <?php
      if ($results->num_rows > 0)
      {
-        $row = $results->fetch_row();
+	     $row = $results->fetch_row();
+     }
 ?>
 <form>
     <p style="padding-right: 132px;">
@@ -180,59 +181,6 @@ closeConnection($conn);
         <b style="padding-right: 30px;">Date Signed</b>
 	<input type="text" size="27" value="<?php printf('%s',$row[62])?>" disabled />
    </p>    
-
-<!--<h3>Volunteers</h3>
-<?php
-        if ($vol_results->num_rows > 0) {
-?>
-<table>
-<tr>
-   <td> First Name </td>
-   <td> Last  Name </td>
-</tr>
-<?php
-           while ($vrow = $vol_results->fetch_assoc()) {
-
-             echo "<tr>";
-
-             foreach ($vrow as $key => $value) {
-
-               if (($key == "FirstName") || ($key == "LastName"))  {
-
-                 echo "<td> echo($value)</td>";
-               }
-
-   	     }
-   
-             echo "</tr>";
-           }
-?>
-</table>
-<?php
-        }
-        else
-        {
-          echo "No Volunteers";
-        }
-?>
-<hr>
-<h2>Raw Data</h2>
- <?php
-            #echo ($row["ChildID"]);
-            foreach ($row as $key => $value) {
-                echo("<p>");
-                echo($key.": ");
-                echo($value." ");
-                echo("</p>");
-            }
-
-
-        }
-        else
-        {
-            echo("no results have returned");
-        }
-?>   -->
 </body>
 </html>
 
