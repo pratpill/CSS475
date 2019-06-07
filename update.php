@@ -65,6 +65,9 @@ function escape ($data) {
 </head>
 
 <div>
+<h1>Make new publication request:</h1>
+<p>Warning: Company policy dictates that we only hold one publication request open per case.</p>
+<p>It is on the user of this web API to ensure that there the currently linked publication request is not still open</p>
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>?id=<?php echo $id_val ?>" 
 	method="post" style="align:center;">
 
