@@ -6,7 +6,7 @@ $conn = new mysqli($serverName, $username, $password, "Missing Children", 8448);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id_val = escape($_POST["id"]);
-    if($conn->query("SELECT * FROM MissingCase WHERE caseID = ".$id_val)->num_rows() 
+    if($conn->query("SELECT * FROM MissingCase WHERE caseID = ".$id_val)->num_rows 
 			< 1) {
 			die("Bad Case ID, try again from the beginning");			
     }
