@@ -8,9 +8,6 @@
 
 <body>
 
-<a href="/update.php">Request Publication of this record</a>
-<br />
-
 <?php
 function getConnToDb(){
     $serverName = "vergil.u.washington.edu";
@@ -74,6 +71,8 @@ closeConnection($conn);
 ?>
 <h1>Missing Child Detailed Page</h1>
 <hr>
+<a href="update.php">Request Publication of this record</a>
+<br />
 <h2>Child Details</h2>
 <h3>Profile</h3>
  <?php

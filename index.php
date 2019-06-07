@@ -83,7 +83,7 @@ function escape ($data) {
           echo "<tr>";
           foreach ($row as $key => $value) {
             if ($key == "caseID") {
-              echo "<td><a href=\"/query.php?id=".$value."\">".$value."</a></td>";
+              echo "<td><a href=\"query.php?id=".$value."\">".$value."</a></td>";
 
             } else {
               echo "<td>".$value."</td>";
