@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   $results = $conn->query($updateQuery.$signed.", ".$date.", ".$name.", ".$relation.", ".$date);
-  mysqli_close();
+  mysqli_close($conn);
 }
 
 function escape ($data) {
