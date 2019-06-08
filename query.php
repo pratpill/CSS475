@@ -199,20 +199,6 @@ closeConnection($conn);
         }
 ?>
 </table>
-<h2>Release of information request</h3>
-    <p style="padding-right: 132px;">
-        <p><b style="padding-right: 30px;">Name</b>
-	<input type="text" size="27" value="<?php printf('%s',$row[62])?>" disabled />
-        </p><p>
-        <b style="padding-right: 30px;">Relationship</b>
-	<input type="text" size="27" value="<?php printf('%s',$row[63])?>" disabled />
-        </p><p>
- 	<b style="padding-right: 30px;">Phone</b>
-	<input type="text" size="27" value="<?php printf('%s',$row[64])?>" disabled />
-        </p><p>
-	<b style="padding-right: 30px;">Date Signed</b>
-	<input type="text" size="27" value="<?php printf('%s',$row[61])?>" disabled />
-</p></p>    
 <?php
         }
         else
@@ -229,6 +215,20 @@ closeConnection($conn);
         }
 ?>
 
+<h2>Release of information request</h3>
+    <p style="padding-right: 132px;">
+        <p><b style="padding-right: 30px;">Name</b>
+	<input type="text" size="27" value="<?php printf('%s',$row[62])?>" disabled />
+        </p><p>
+        <b style="padding-right: 30px;">Relationship</b>
+	<input type="text" size="27" value="<?php printf('%s',$row[63])?>" disabled />
+        </p><p>
+ 	<b style="padding-right: 30px;">Phone</b>
+	<input type="text" size="27" value="<?php printf('%s',$row[64])?>" disabled />
+        </p><p>
+	<b style="padding-right: 30px;">Date Signed</b>
+	<input type="text" size="27" value="<?php printf('%s',$row[61])?>" disabled />
+</p></p>    
 </body>
 </html>
 
