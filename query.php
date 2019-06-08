@@ -26,9 +26,9 @@ function closeConnection($conn)
 function getInfo($caseID, $conn)
 {
     $selectQuery = "SELECT * FROM (SELECT * FROM MissingCase WHERE caseID = ".$caseID.") c".
-    " INNER JOIN (SELECT * FROM Search) s ON s.SearchID = c.searchID".
-    " INNER JOIN (SELECT * FROM AmberAlert) a ON a.AlertID = c.amberAlertID".
-    " INNER JOIN (SELECT * FROM Child INNER JOIN Address ON Child.Adddress = Address.AddressID) k ON k.ChildID = c.childID".
+    " LEFT JOIN (SELECT * FROM Search) s ON s.SearchID = c.searchID".
+    " LEFT JOIN (SELECT * FROM AmberAlert) a ON a.AlertID = c.amberAlertID".
+    " INNER JOIN (SELECT * FROM Child LEFT JOIN Address ON Child.Adddress = Address.AddressID) k ON k.ChildID = c.childID".
     " LEFT JOIN (SELECT * FROM PrivateDetective) pd ON pd.pdID = c.pdID".
     " LEFT JOIN (SELECT * FROM ParentContact) pc ON pc.ParentContactId = k.ParentContactId".
     " LEFT JOIN (SELECT * FROM Suspect) sp ON sp.suspectID =c.SuspectID".
